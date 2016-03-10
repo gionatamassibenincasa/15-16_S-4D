@@ -40,7 +40,8 @@ int main(int argc, char *argv[]) {
         max = s1;
     else
         max = s2;
-        
-    cout << max << endl;
+    
+    // Scrittura del massimo
+    cout << "Il numero massimo e' " << max << endl;
     return EXIT_SUCCESS;
 }
