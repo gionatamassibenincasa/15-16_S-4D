@@ -11,6 +11,16 @@
 
 using namespace std;
 
+void stampa_array(int array[], int lunghezza)
+{
+    if (lunghezza > 0) {
+        cout << array[0] << " ";
+        stampa_array(array + 1, lunghezza - 1);
+    } else {
+        cout << endl;
+    }
+}
+
 int main(int argc, char *argv[])
 {
     // Dichiarazione della variabile numero_elementi
@@ -29,9 +39,17 @@ int main(int argc, char *argv[])
         cin >> serie[j];
     }
     
+    // Stampa l'array
+    cout << "Il vettore non ordinato ";
+    stampa_array(serie, numero_elementi);
+    
     // ordina l'array
     sort(serie, serie+numero_elementi);
     
+    // Stampa l'array ordinato
+    cout << "Il vettore ordinato: ";
+    stampa_array(serie, numero_elementi);
+
     // Estrae l'elemento mediano
     cout << "L'elemento mediano vale: " <<
         serie[numero_elementi/2] << endl;
