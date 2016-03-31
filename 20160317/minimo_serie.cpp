@@ -27,5 +27,11 @@ int main(int argc, char *argv[]) {
  
  cout << "Il numero minimo della serie vale: " << minimo << endl;
  
+#ifdef _WIN32
+	/* Se si compila per windows allora si richiede
+	   l'esecuzione del programma pause */
+	system("pause");
+#endif
+ 
  return EXIT_SUCCESS;
 }
