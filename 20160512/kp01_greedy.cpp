@@ -21,6 +21,31 @@ bool verifica_ordinamento(
     return true;
 }
 
+void soluzione_greedy(
+    const int n,
+    const int p[],
+    const int w[],
+    int Cr, //< capacita' residua
+    int x[],
+    int& z)
+{
+    for (int j = 0; j < n; j++) {
+        // Se il peso dell'oggetto j e'
+        // <= alla capacita' residua
+        if (w[j] <= Cr) {
+            // Aggiungo l'oggetto j alla soluzione
+            x[j] = 1;
+            // Aggiorno il valore del profitto
+            z += p[j];
+            // Aggiorno la capacita' residua
+            Cr -= w[j];
+        } else {
+            // Non ci sono oggetti j nella soluzione
+            x[j] = 0;
+        }
+    }
+}
+
 int main(int argc, char *argv[])
 {
     // Istanza del problema
@@ -44,4 +69,11 @@ int main(int argc, char *argv[])
         return EXIT_FAILURE;
     }
     
+    soluzione_greedy(n, p, w, C, x, z);
+    
+    cout << "Il valore del profitto e' " << z << endl;
+ 
+#ifdef _WIN32
+    system("PAUSE");
+#endif
 }
