@@ -1,5 +1,6 @@
 #include <cstdlib>
 #include <iostream>
+#include <sstream>
 
 using namespace std;
 
@@ -46,6 +47,20 @@ void soluzione_greedy(
     }
 }
 
+string stampa_vettore(const int n, const int v[]) {
+    stringstream s;
+    s << "(";
+    if (n > 0) {
+        s << " " << v[0];
+    }
+    for (int j = 1; j < n; j++) {
+        s << ", " << v[j];
+    }
+    s << ")";
+    
+    return s.str();
+}
+
 int main(int argc, char *argv[])
 {
     // Istanza del problema
@@ -71,7 +86,10 @@ int main(int argc, char *argv[])
     
     soluzione_greedy(n, p, w, C, x, z);
     
-    cout << "Il valore del profitto e' " << z << endl;
+    cout << "Il valore del profitto e' "
+         << z << endl;
+    cout << "Il vettore soluzione e' "
+         << stampa_vettore(n, x) << endl;
  
 #ifdef _WIN32
     system("PAUSE");
